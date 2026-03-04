@@ -1,0 +1,24 @@
+name: C# Workflow
+
+on: 
+ push: 
+   branches: ["main"]
+ pull_request: 
+   branches: ["main"]
+
+jobs:
+  builds:
+
+    runs-on: windows-latest
+
+    steps: 
+    - uses: actions/checkout@4
+    - name: Setup .NET SDK
+    uses: actions/setup-dotnet@v4
+    with: 
+      dotnet-version: '10.0'
+      - nmae: Restore Dependencies
+        uses: dotnet restore
+      - name: Build
+       uses: dotnet build -- no-restore
+       
